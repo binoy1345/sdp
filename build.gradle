@@ -11,6 +11,7 @@ plugins {
 	id 'java'
 }
 
+apply plugin: 'war'
 apply plugin: 'org.springframework.boot'
 
 group = 'com.example'
@@ -30,4 +31,5 @@ dependencies {
 	implementation 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'com.h2database:h2'
 }
