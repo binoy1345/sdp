@@ -11,6 +11,7 @@ plugins {
 	id 'java'
 }
 
+apply plugin: 'war'
 apply plugin: 'org.springframework.boot'
 
 group = 'com.example'

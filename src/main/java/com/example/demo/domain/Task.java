@@ -8,8 +8,22 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "Task")
+@Table(name = "task")
 public class Task {
+
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @Column(name = "description")
+    private String desc;
+
+    @Column(name = "target_date")
+    private Date targetDate;
+
+    @Column(name = "is_done")
+    private boolean isDone;
+
     public int getId() {
         return id;
     }
@@ -25,18 +39,5 @@ public class Task {
     public boolean isDone() {
         return isDone;
     }
-
-    @Id
-    @GeneratedValue
-    private int id;
-
-    @Column(name = "description")
-    private String desc;
-
-    @Column(name = "target_date")
-    private Date targetDate;
-
-    @Column(name = "is_done")
-    private boolean isDone;
 
 }
