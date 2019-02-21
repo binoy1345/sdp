@@ -1,6 +1,8 @@
 package com.example.demo.config;
 
 
+import com.example.demo.auth.AjaxAuthenticationFailureHandler;
+import com.example.demo.auth.AjaxAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,22 +38,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf()
-                .ignoringAntMatchers("/login", "/logout")
-                .and()
                 .authorizeRequests()
                 .antMatchers("/", "/home", "/login", "/logout").permitAll()
                 .anyRequest().authenticated()
                 .and()
                     .formLogin()
                     .loginPage("/login")
+                    //.successHandler(new AjaxAuthenticationSuccessHandler())
+                    //.failureHandler(new AjaxAuthenticationFailureHandler())
                     .permitAll()
                 .and()
                     .logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                     .logoutUrl("/logout")
                     .logoutSuccessUrl("/")
-                    .permitAll();
+                    .deleteCookies("JSESSIONID")
+                    .permitAll()
+                .and()
+                    .csrf().disable();
     }
 }
 
