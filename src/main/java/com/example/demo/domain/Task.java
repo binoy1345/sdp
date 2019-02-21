@@ -32,6 +32,18 @@ public class Task {
         return desc;
     }
 
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public void setTargetDate(Date targetDate) {
+        this.targetDate = targetDate;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
+    }
+
     public Date getTargetDate() {
         return targetDate;
     }
